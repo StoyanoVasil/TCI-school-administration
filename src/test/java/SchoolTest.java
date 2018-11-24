@@ -1,6 +1,7 @@
 import org.junit.Before;
 import org.junit.Test;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
@@ -97,5 +98,26 @@ public class SchoolTest {
 
         // assert
         assertEquals("Search course not working", course, school.getCourseByName(courseName));
+    }
+
+    @Test
+    public void testGetAllCourseNames() throws DuplicateCourseException, CourseException, CourseDateException {
+
+        // arrange
+        String courseName1 = "TCI";
+        String courseName2 = "SAI";
+        Date startDate = new GregorianCalendar(2018, Calendar.DECEMBER  , 12).getTime();
+        Date endDate = new GregorianCalendar(2019, Calendar.FEBRUARY, 15).getTime();
+        Course course1 = new Course(courseName1, startDate, endDate);
+        Course course2 = new Course(courseName2, startDate, endDate);
+
+        // act
+        school.addCourse(course1);
+        school.addCourse(course2);
+        ArrayList<String> names = school.getAllCourseNames();
+
+        // assert
+        assertTrue("Does not return all added courses names", names.contains(courseName1));
+        assertTrue("Does not return all added courses names", names.contains(courseName2));
     }
 }
