@@ -41,7 +41,7 @@ public class SchoolTest {
 
 
     @Test
-    public void testAddCourse() throws CourseDateException, CourseException {
+    public void testAddCourse() throws CourseDateException, CourseException, DuplicateCourseException {
 
         // arrange
         String courseName = "TCI";
@@ -57,7 +57,7 @@ public class SchoolTest {
 
     @Test(expected=CourseException.class)
     public void testAddCourseWithStartingDateBeforeSchoolStartingDate()
-            throws CourseException, CourseDateException {
+            throws CourseException, CourseDateException, DuplicateCourseException {
 
         // arrange
         String courseName = "TCI";
@@ -66,6 +66,20 @@ public class SchoolTest {
         Course course = new Course(courseName, startDate, endDate);
 
         // act
+        school.addCourse(course);
+    }
+
+    @Test(expected=DuplicateCourseException.class)
+    public void testNoDuplicateCourseNames() throws DuplicateCourseException, CourseException, CourseDateException {
+
+        // arrange
+        String courseName = "TCI";
+        Date startDate = new GregorianCalendar(2018, Calendar.DECEMBER  , 12).getTime();
+        Date endDate = new GregorianCalendar(2019, Calendar.FEBRUARY, 15).getTime();
+        Course course = new Course(courseName, startDate, endDate);
+
+        // act
+        school.addCourse(course);
         school.addCourse(course);
     }
 }
