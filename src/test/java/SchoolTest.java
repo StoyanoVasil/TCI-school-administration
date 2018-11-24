@@ -120,4 +120,27 @@ public class SchoolTest {
         assertTrue("Does not return all added courses names", names.contains(courseName1));
         assertTrue("Does not return all added courses names", names.contains(courseName2));
     }
+
+    @Test
+    public void testGetCopyOfAllCourses() throws DuplicateCourseException, CourseException, CourseDateException {
+
+        // arrange
+        String courseName1 = "TCI";
+        String courseName2 = "SAI";
+        Date startDate = new GregorianCalendar(2018, Calendar.DECEMBER  , 12).getTime();
+        Date endDate = new GregorianCalendar(2019, Calendar.FEBRUARY, 15).getTime();
+        Course course1 = new Course(courseName1, startDate, endDate);
+        Course course2 = new Course(courseName2, startDate, endDate);
+
+        // act
+        school.addCourse(course1);
+        school.addCourse(course2);
+        ArrayList<Course> courses = school.getCopyOfAllCourses();
+
+        // assert
+        assertEquals("Copy of all courses and school courses are not the same number",
+                courses.size(), school.getNumberOfCourses());
+        assertNotEquals("Returned a reference not a copy", course1, courses.get(0));
+        assertNotEquals("Returned a reference not a copy", course2, courses.get(1));
+    }
 }
