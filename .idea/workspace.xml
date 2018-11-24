@@ -489,7 +489,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="JUnit.SchoolTest">
     <configuration name="CourseTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="school_test" />
       <option name="PACKAGE_NAME" value="" />
@@ -498,8 +498,21 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="SchoolTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="school_test" />
+      <option name="PACKAGE_NAME" value="" />
+      <option name="MAIN_CLASS_NAME" value="SchoolTest" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="JUnit.CourseTest" />
+      <item itemvalue="JUnit.SchoolTest" />
+    </list>
     <recent_temporary>
       <list>
+        <item itemvalue="JUnit.SchoolTest" />
         <item itemvalue="JUnit.CourseTest" />
       </list>
     </recent_temporary>
