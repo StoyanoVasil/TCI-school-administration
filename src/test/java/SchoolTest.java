@@ -15,7 +15,7 @@ public class SchoolTest {
     private School school;
 
     @Before
-    public void before() {
+    public void before() throws NullArgumentException {
 
         // arrange
         schoolName = "Fontys";
