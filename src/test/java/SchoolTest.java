@@ -54,4 +54,18 @@ public class SchoolTest {
         // assert
         assertEquals("Course not added", 1, school.getNumberOfCourses());
     }
+
+    @Test(expected=CourseException.class)
+    public void testAddCourseWithStartingDateBeforeSchoolStartingDate()
+            throws CourseException, CourseDateException {
+
+        // arrange
+        String courseName = "TCI";
+        Date startDate = new GregorianCalendar(2018, Calendar.MAY, 12).getTime();
+        Date endDate = new GregorianCalendar(2019, Calendar.FEBRUARY, 15).getTime();
+        Course course = new Course(courseName, startDate, endDate);
+
+        // act
+        school.addCourse(course);
+    }
 }

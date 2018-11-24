@@ -1,6 +1,6 @@
 /**
  * Custom exception class.
- * Used when the end date of a Course is before the start date
+ * Used when name or openingDate of school is set to null
  */
 public class NullArgumentException extends Exception {
 
