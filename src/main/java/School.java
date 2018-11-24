@@ -44,4 +44,11 @@ public class School {
         }
         return null;
     }
+
+    public ArrayList<String> getAllCourseNames() {
+
+        ArrayList<String> names = new ArrayList<>();
+        for(Course course : this.courses) names.add(course.getName());
+        return names;
+    }
 }
