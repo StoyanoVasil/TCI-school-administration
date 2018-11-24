@@ -25,4 +25,9 @@ public class School {
     public int getNumberOfCourses() {
         return this.courses.size();
     }
+
+    public void addCourse(Course course) {
+
+        this.courses.add(course);
+    }
 }

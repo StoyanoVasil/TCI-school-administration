@@ -41,7 +41,7 @@ public class SchoolTest {
 
 
     @Test
-    public void testAddCourse() throws CourseException, CourseDateException, DuplicateCourseException {
+    public void testAddCourse() throws CourseDateException {
 
         // arrange
         String courseName = "TCI";
