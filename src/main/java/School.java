@@ -51,4 +51,11 @@ public class School {
         for(Course course : this.courses) names.add(course.getName());
         return names;
     }
+
+    public ArrayList<Course> getCopyOfAllCourses() throws CourseDateException {
+
+        ArrayList<Course> crs = new ArrayList<>();
+        for(Course c : this.courses) crs.add(new Course(c.getName(), c.getStartDate(), c.getEndDate()));
+        return crs;
+    }
 }
