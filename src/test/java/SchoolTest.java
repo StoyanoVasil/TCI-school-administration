@@ -82,4 +82,20 @@ public class SchoolTest {
         school.addCourse(course);
         school.addCourse(course);
     }
+
+    @Test
+    public void testGetCourseByName() throws DuplicateCourseException, CourseException, CourseDateException {
+
+        // arrange
+        String courseName = "TCI";
+        Date startDate = new GregorianCalendar(2018, Calendar.DECEMBER  , 12).getTime();
+        Date endDate = new GregorianCalendar(2019, Calendar.FEBRUARY, 15).getTime();
+        Course course = new Course(courseName, startDate, endDate);
+
+        // act
+        school.addCourse(course);
+
+        // assert
+        assertEquals("Search course not working", course, school.getCourseByName(courseName));
+    }
 }
