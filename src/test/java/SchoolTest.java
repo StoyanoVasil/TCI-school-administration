@@ -5,8 +5,7 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.*;
 
 public class SchoolTest {
 
@@ -37,5 +36,22 @@ public class SchoolTest {
 
         // act
         School school = new School(null, null);
+    }
+
+
+
+    @Test
+    public void testAddCourse() throws CourseException, CourseDateException, DuplicateCourseException {
+
+        // arrange
+        String courseName = "TCI";
+        Date startDate = new GregorianCalendar(2018, Calendar.NOVEMBER, 12).getTime();
+        Date endDate = new GregorianCalendar(2019, Calendar.FEBRUARY, 15).getTime();
+
+        // act
+        school.addCourse(new Course(courseName, startDate, endDate));
+
+        // assert
+        assertEquals("Course not added", 1, school.getNumberOfCourses());
     }
 }
