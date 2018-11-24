@@ -8,7 +8,7 @@ public class School {
     private ArrayList<Course> courses;
 
     public School(String name, Date openingDate) throws NullArgumentException {
-        if(name == null || openingDate == null) throw new NullArgumentException();
+        if (name == null || openingDate == null) throw new NullArgumentException();
         this.name = name;
         this.openingDate = openingDate;
         this.courses = new ArrayList<>();
@@ -26,8 +26,12 @@ public class School {
         return this.courses.size();
     }
 
-    public void addCourse(Course course) {
+    public void addCourse(Course course) throws CourseException {
 
-        this.courses.add(course);
+        if (course.getStartDate().after(this.openingDate)) {
+            this.courses.add(course);
+        } else {
+            throw new CourseException();
+        }
     }
 }
