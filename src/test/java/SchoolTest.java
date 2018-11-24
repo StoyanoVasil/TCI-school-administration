@@ -6,6 +6,7 @@ import java.util.Date;
 import java.util.GregorianCalendar;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 public class SchoolTest {
 
@@ -29,5 +30,12 @@ public class SchoolTest {
         assertEquals("School name is not set", this.schoolName, school.getName());
         assertEquals("School opening date is not set", this.openingDate, school.getOpeningDate());
         assertEquals("School opening date is not set", 0, school.getNumberOfCourses());
+    }
+
+    @Test(expected=NullArgumentException.class)
+    public void testSchoolFieldsAreNotNull() throws NullArgumentException {
+
+        // act
+        School school = new School(null, null);
     }
 }
