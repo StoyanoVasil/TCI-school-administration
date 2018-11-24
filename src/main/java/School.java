@@ -26,9 +26,12 @@ public class School {
         return this.courses.size();
     }
 
-    public void addCourse(Course course) throws CourseException {
+    public void addCourse(Course course) throws CourseException, DuplicateCourseException {
 
         if (course.getStartDate().after(this.openingDate)) {
+            for(Course crs : this.courses) {
+                if(crs.getName().equals(course.getName())) throw new DuplicateCourseException();
+            }
             this.courses.add(course);
         } else {
             throw new CourseException();
