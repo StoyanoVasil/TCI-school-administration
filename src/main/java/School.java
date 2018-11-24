@@ -29,12 +29,19 @@ public class School {
     public void addCourse(Course course) throws CourseException, DuplicateCourseException {
 
         if (course.getStartDate().after(this.openingDate)) {
-            for(Course crs : this.courses) {
-                if(crs.getName().equals(course.getName())) throw new DuplicateCourseException();
-            }
+            Course crs = getCourseByName(course.getName());
+            if(crs != null) throw new DuplicateCourseException();
             this.courses.add(course);
         } else {
             throw new CourseException();
         }
+    }
+
+    public Course getCourseByName(String courseName) {
+
+        for(Course course : this.courses) {
+            if(course.getName().equals(courseName)) return course;
+        }
+        return null;
     }
 }
